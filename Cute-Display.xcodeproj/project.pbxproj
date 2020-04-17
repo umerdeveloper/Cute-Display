@@ -56,15 +56,31 @@
 		CB39CA45244A285500F07E98 /* Cute-Display */ = {
 			isa = PBXGroup;
 			children = (
-				CB39CA46244A285500F07E98 /* AppDelegate.swift */,
-				CB39CA48244A285500F07E98 /* SceneDelegate.swift */,
-				CB39CA4A244A285500F07E98 /* ViewController.swift */,
-				CB39CA4C244A285500F07E98 /* Main.storyboard */,
+				CB39CA5A244A28A300F07E98 /* Supporting Files */,
+				CB39CA5B244A28B100F07E98 /* View Controller */,
 				CB39CA4F244A285600F07E98 /* Assets.xcassets */,
-				CB39CA51244A285600F07E98 /* LaunchScreen.storyboard */,
 				CB39CA54244A285600F07E98 /* Info.plist */,
 			);
 			path = "Cute-Display";
+			sourceTree = "<group>";
+		};
+		CB39CA5A244A28A300F07E98 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CB39CA46244A285500F07E98 /* AppDelegate.swift */,
+				CB39CA48244A285500F07E98 /* SceneDelegate.swift */,
+				CB39CA4C244A285500F07E98 /* Main.storyboard */,
+				CB39CA51244A285600F07E98 /* LaunchScreen.storyboard */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CB39CA5B244A28B100F07E98 /* View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CB39CA4A244A285500F07E98 /* ViewController.swift */,
+			);
+			path = "View Controller";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -287,6 +303,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 646XC4LJ39;
 				INFOPLIST_FILE = "Cute-Display/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -294,7 +311,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.developers.Cute-Display";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -305,6 +322,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 646XC4LJ39;
 				INFOPLIST_FILE = "Cute-Display/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -312,7 +330,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.developers.Cute-Display";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
