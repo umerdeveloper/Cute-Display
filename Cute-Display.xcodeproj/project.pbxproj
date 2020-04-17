@@ -13,6 +13,7 @@
 		CB39CA4E244A285500F07E98 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB39CA4C244A285500F07E98 /* Main.storyboard */; };
 		CB39CA50244A285600F07E98 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB39CA4F244A285600F07E98 /* Assets.xcassets */; };
 		CB39CA53244A285600F07E98 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB39CA51244A285600F07E98 /* LaunchScreen.storyboard */; };
+		CB39CA5E244A2AE200F07E98 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB39CA5D244A2AE200F07E98 /* CollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		CB39CA4F244A285600F07E98 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CB39CA52244A285600F07E98 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CB39CA54244A285600F07E98 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CB39CA5D244A2AE200F07E98 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 		CB39CA45244A285500F07E98 /* Cute-Display */ = {
 			isa = PBXGroup;
 			children = (
+				CB39CA5C244A2AD700F07E98 /* View */,
 				CB39CA5A244A28A300F07E98 /* Supporting Files */,
 				CB39CA5B244A28B100F07E98 /* View Controller */,
 				CB39CA4F244A285600F07E98 /* Assets.xcassets */,
@@ -81,6 +84,14 @@
 				CB39CA4A244A285500F07E98 /* ViewController.swift */,
 			);
 			path = "View Controller";
+			sourceTree = "<group>";
+		};
+		CB39CA5C244A2AD700F07E98 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CB39CA5D244A2AE200F07E98 /* CollectionViewCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -156,6 +167,7 @@
 			files = (
 				CB39CA4B244A285500F07E98 /* ViewController.swift in Sources */,
 				CB39CA47244A285500F07E98 /* AppDelegate.swift in Sources */,
+				CB39CA5E244A2AE200F07E98 /* CollectionViewCell.swift in Sources */,
 				CB39CA49244A285500F07E98 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
