@@ -10,7 +10,8 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    let label = UILabel()
+    let apiKey: String              = "13651762-bb2c92e1d09f606942de46d23"
+    let urlString: String           = "https://pixabay.com/api/"
     
     fileprivate let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -26,6 +27,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         configureView()
         configureCollectionView()
+        networking()
         
     }
     
@@ -34,16 +36,6 @@ class ViewController: UIViewController {
         self.view.backgroundColor = .white
     }
     
-    
-    fileprivate func configureLabel() {
-        view.addSubview(label)
-        label.text = "Cute-Display"
-        label.textColor = .orange
-        label.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-        label.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        label.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        
-    }
     
     
     fileprivate func configureCollectionView() {
@@ -72,10 +64,64 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegateFl
         return 10
     }
     
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CollectionViewCell
         return cell
     }
+}
+
+
+
+extension ViewController {
+    
+    func networking() {
+        
+        var urlComponents = URLComponents()
+        urlComponents.scheme = "https"
+        urlComponents.host = "pixabay.com"
+        urlComponents.path = "/api/"
+        
+        let searchedImage = URLQueryItem(name: "q", value: "car")
+        let imageType = URLQueryItem(name: "image_type", value: "photo")
+        let orientation = URLQueryItem(name: "orientation", value: "vertical")
+        let key = URLQueryItem(name: "key", value: apiKey)
+        
+        urlComponents.queryItems = [imageType, orientation, key, searchedImage]
+        
+        guard let validURL = urlComponents.url else { return }
+        
+        let task = URLSession.shared.dataTask(with: validURL) { (data, response, error) in
+            if error != nil { return }
+            guard let validData = data else { return }
+            
+            do {
+        
+                let validJson = try JSONDecoder().decode(Json4Swift_Base.self, from: validData)
+                self.jsonData(data: validJson)
+                
+            }
+                
+            catch { return }
+            
+        }
+        task.resume()
+    }
+    
+    
+    func jsonData(data: Json4Swift_Base) {
+        
+        print(data.hits?.count ?? 1)
+        
+        for image in 0..<data.hits!.count {
+            print(data.hits?[image].largeImageURL ?? UIImage())
+        }
+        
+        
+    }
+    
+    
+    
     
     
 }

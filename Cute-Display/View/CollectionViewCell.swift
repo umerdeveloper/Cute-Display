@@ -10,10 +10,11 @@ import UIKit
 
 class CollectionViewCell: UICollectionViewCell {
     
-    fileprivate let wallpaper: UIImageView = {
+        let wallpaper: UIImageView = {
         let iv = UIImageView()
         iv.translatesAutoresizingMaskIntoConstraints = false
         iv.contentMode = .scaleAspectFit
+        iv.clipsToBounds = true
         iv.image = #imageLiteral(resourceName: "profile")
         iv.layer.cornerRadius = 12
         return iv
