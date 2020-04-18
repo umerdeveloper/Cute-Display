@@ -11,9 +11,10 @@ import SDWebImage
 
 class ViewController: UIViewController {
     
-    var imgArray = [String]()
-    
-    let apiKey: String              = "13651762-bb2c92e1d09f606942de46d23"
+    var imgArray                        = [String]()
+    private let apiKey: String          = "13651762-bb2c92e1d09f606942de46d23"
+    let searchBar                       = UISearchBar()
+    var searchedWallpaper: String       = "girls"
     
     fileprivate let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -28,13 +29,28 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureView()
+        configureSearchBar()
         configureCollectionView()
         networking()
-        print("ArrayItemsInViewDidLoad: \(imgArray.count)")
         
     }
     fileprivate func configureView() {
         self.view.backgroundColor = .white
+    }
+    
+    fileprivate func configureSearchBar() {
+        
+        searchBar.searchBarStyle = .default
+        searchBar.placeholder = "Search Wallpapers"
+        searchBar.backgroundImage = UIImage()
+        searchBar.delegate = self
+        view.addSubview(searchBar)
+        
+        searchBar.translatesAutoresizingMaskIntoConstraints = false
+        searchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        searchBar.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
+        searchBar.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
+        
     }
     fileprivate func configureCollectionView() {
         self.view.addSubview(collectionView)
@@ -43,7 +59,7 @@ class ViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         
-        collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
+        collectionView.topAnchor.constraint(equalTo: searchBar.bottomAnchor).isActive = true
         collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
@@ -67,9 +83,17 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegateFl
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CollectionViewCell
         
         guard let validURL: URL = URL(string: imgArray[indexPath.row]) else { fatalError("Not valid image url") }
-        
+        //cell.wallpaper.load(url: validURL)
         cell.wallpaper.sd_setImage(with: validURL)
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let vc = ImageViewController()
+        vc.modalPresentationStyle = .fullScreen
+        guard let validURL: URL = URL(string: imgArray[indexPath.row]) else { fatalError("Not valid image url") }
+        vc.imageURL = validURL
+        present(vc, animated: true)
     }
 }
 
@@ -84,12 +108,16 @@ extension ViewController {
         urlComponents.host = "pixabay.com"
         urlComponents.path = "/api/"
         
-        let searchedImage = URLQueryItem(name: "q", value: "flower")
+        let key = URLQueryItem(name: "key", value: apiKey)
+        let searchedImage = URLQueryItem(name: "q", value: searchedWallpaper)
         let imageType = URLQueryItem(name: "image_type", value: "photo")
         let orientation = URLQueryItem(name: "orientation", value: "vertical")
-        let key = URLQueryItem(name: "key", value: apiKey)
+        let safeSearch = URLQueryItem(name: "safesearch", value: "true")
+        let perPage = URLQueryItem(name: "per_page", value: "5")
+        let imageOrder = URLQueryItem(name: "order", value: "latest")
         
-        urlComponents.queryItems = [imageType, orientation, key, searchedImage]
+        
+        urlComponents.queryItems = [imageType, orientation, key, searchedImage, safeSearch, perPage, imageOrder]
         
         guard let validURL = urlComponents.url else { return }
         
@@ -115,4 +143,8 @@ extension ViewController {
             self.collectionView.reloadData()
         }
     }
+}
+
+extension ViewController: UISearchBarDelegate {
+    
 }
