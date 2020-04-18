@@ -9,7 +9,7 @@
 import UIKit
 import SDWebImage
 
-class imagesCollectionVC: UIViewController {
+class ImagesCollectionVC: UIViewController {
     
     var imgArray                        = [String]()
     private let apiKey: String          = "13651762-bb2c92e1d09f606942de46d23"
@@ -67,7 +67,7 @@ class imagesCollectionVC: UIViewController {
 }
 
 
-extension imagesCollectionVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension ImagesCollectionVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.width / 1.1, height: collectionView.frame.width / 2.2)
@@ -99,7 +99,7 @@ extension imagesCollectionVC: UICollectionViewDataSource, UICollectionViewDelega
 
 
 
-extension imagesCollectionVC {
+extension ImagesCollectionVC {
     
     func networking() {
         
@@ -145,6 +145,6 @@ extension imagesCollectionVC {
     }
 }
 
-extension imagesCollectionVC: UISearchBarDelegate {
+extension ImagesCollectionVC: UISearchBarDelegate {
     
 }
