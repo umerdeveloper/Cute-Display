@@ -13,7 +13,7 @@ class CollectionViewCell: UICollectionViewCell {
         let wallpaper: UIImageView = {
         let iv = UIImageView()
         iv.translatesAutoresizingMaskIntoConstraints = false
-        iv.contentMode = .scaleAspectFit
+        iv.contentMode = .scaleAspectFill
         iv.clipsToBounds = true
         iv.image = #imageLiteral(resourceName: "profile")
         iv.layer.cornerRadius = 12

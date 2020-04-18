@@ -10,6 +10,8 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    var imgArray = [String]()
+    
     let apiKey: String              = "13651762-bb2c92e1d09f606942de46d23"
     let urlString: String           = "https://pixabay.com/api/"
     
@@ -28,6 +30,7 @@ class ViewController: UIViewController {
         configureView()
         configureCollectionView()
         networking()
+        print("ArrayItemsInViewDidLoad: \(imgArray.count)")
         
     }
     
@@ -45,7 +48,7 @@ class ViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         
-        collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
         collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
@@ -56,12 +59,12 @@ class ViewController: UIViewController {
 extension ViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: collectionView.frame.width / 2)
+        return CGSize(width: collectionView.frame.width / 1.1, height: collectionView.frame.width / 2.2)
     }
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return 20
     }
     
     
@@ -111,12 +114,15 @@ extension ViewController {
     
     func jsonData(data: Json4Swift_Base) {
         
-        print(data.hits?.count ?? 1)
+        //print(data.hits?.count ?? 1)
         
-        for image in 0..<data.hits!.count {
-            print(data.hits?[image].largeImageURL ?? UIImage())
+        for index in 0..<data.hits!.count {
+            
+            let urlString = String((data.hits?[index].largeImageURL!)!)
+            
+            self.imgArray.append(urlString)
         }
-        
+        print("After Appending: \(imgArray.count)")
         
     }
     
