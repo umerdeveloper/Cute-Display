@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class ViewController: UIViewController {
     
@@ -64,6 +65,10 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegateFl
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CollectionViewCell
+        
+        guard let validURL: URL = URL(string: imgArray[indexPath.row]) else { fatalError("Not valid image url") }
+        
+        cell.wallpaper.sd_setImage(with: validURL)
         return cell
     }
 }

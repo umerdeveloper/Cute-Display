@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,6 +16,7 @@
 		CB39CA5E244A2AE200F07E98 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB39CA5D244A2AE200F07E98 /* CollectionViewCell.swift */; };
 		CBBFFEB5244A45F500F5EB26 /* Json4Swift_Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBFFEB3244A45F500F5EB26 /* Json4Swift_Base.swift */; };
 		CBBFFEB6244A45F500F5EB26 /* Hits.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBFFEB4244A45F500F5EB26 /* Hits.swift */; };
+		CBBFFEBF244AD70200F5EB26 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = CBBFFEBE244AD70200F5EB26 /* SDWebImage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBBFFEBF244AD70200F5EB26 /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -124,6 +126,9 @@
 			dependencies = (
 			);
 			name = "Cute-Display";
+			packageProductDependencies = (
+				CBBFFEBE244AD70200F5EB26 /* SDWebImage */,
+			);
 			productName = "Cute-Display";
 			productReference = CB39CA43244A285500F07E98 /* Cute-Display.app */;
 			productType = "com.apple.product-type.application";
@@ -152,6 +157,9 @@
 				Base,
 			);
 			mainGroup = CB39CA3A244A285500F07E98;
+			packageReferences = (
+				CBBFFEBD244AD70200F5EB26 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+			);
 			productRefGroup = CB39CA44244A285500F07E98 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -384,6 +392,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CBBFFEBD244AD70200F5EB26 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CBBFFEBE244AD70200F5EB26 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CBBFFEBD244AD70200F5EB26 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CB39CA3B244A285500F07E98 /* Project object */;
 }
