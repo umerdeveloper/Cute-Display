@@ -20,6 +20,8 @@
 		CBBFFEC2244ADBE700F5EB26 /* UIImage+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBFFEC1244ADBE700F5EB26 /* UIImage+Ex.swift */; };
 		CBBFFEC4244AF5D700F5EB26 /* ImageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBFFEC3244AF5D700F5EB26 /* ImageVC.swift */; };
 		CBBFFEC6244AFE3E00F5EB26 /* ChoosedImagesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBFFEC5244AFE3E00F5EB26 /* ChoosedImagesVC.swift */; };
+		CBBFFEC8244B138F00F5EB26 /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBFFEC7244B138F00F5EB26 /* CustomLabel.swift */; };
+		CBBFFECA244B139E00F5EB26 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBFFEC9244B139E00F5EB26 /* CustomTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +39,8 @@
 		CBBFFEC1244ADBE700F5EB26 /* UIImage+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Ex.swift"; sourceTree = "<group>"; };
 		CBBFFEC3244AF5D700F5EB26 /* ImageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageVC.swift; sourceTree = "<group>"; };
 		CBBFFEC5244AFE3E00F5EB26 /* ChoosedImagesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoosedImagesVC.swift; sourceTree = "<group>"; };
+		CBBFFEC7244B138F00F5EB26 /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
+		CBBFFEC9244B139E00F5EB26 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +127,8 @@
 			isa = PBXGroup;
 			children = (
 				CBBFFEC1244ADBE700F5EB26 /* UIImage+Ex.swift */,
+				CBBFFEC7244B138F00F5EB26 /* CustomLabel.swift */,
+				CBBFFEC9244B139E00F5EB26 /* CustomTextField.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -205,6 +211,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				CBBFFEC2244ADBE700F5EB26 /* UIImage+Ex.swift in Sources */,
+				CBBFFECA244B139E00F5EB26 /* CustomTextField.swift in Sources */,
+				CBBFFEC8244B138F00F5EB26 /* CustomLabel.swift in Sources */,
 				CB39CA4B244A285500F07E98 /* ImagesCollectionVC.swift in Sources */,
 				CB39CA47244A285500F07E98 /* AppDelegate.swift in Sources */,
 				CBBFFEC6244AFE3E00F5EB26 /* ChoosedImagesVC.swift in Sources */,

@@ -14,7 +14,8 @@ class ImagesCollectionVC: UIViewController {
     var imgArray                        = [String]()
     private let apiKey: String          = "13651762-bb2c92e1d09f606942de46d23"
     let searchBar                       = UISearchBar()
-    var searchedWallpaper: String       = "girls"
+    var searchedWallpaper: String       = ""
+    var numberOfImages: String          = ""
     
     fileprivate let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -29,7 +30,6 @@ class ImagesCollectionVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureView()
-        configureSearchBar()
         configureCollectionView()
         networking()
         
@@ -38,20 +38,7 @@ class ImagesCollectionVC: UIViewController {
         self.view.backgroundColor = .white
     }
     
-    fileprivate func configureSearchBar() {
-        
-        searchBar.searchBarStyle = .default
-        searchBar.placeholder = "Search Wallpapers"
-        searchBar.backgroundImage = UIImage()
-        searchBar.delegate = self
-        view.addSubview(searchBar)
-        
-        searchBar.translatesAutoresizingMaskIntoConstraints = false
-        searchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-        searchBar.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
-        searchBar.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
-        
-    }
+    
     fileprivate func configureCollectionView() {
         self.view.addSubview(collectionView)
         collectionView.backgroundColor = .white
@@ -59,7 +46,7 @@ class ImagesCollectionVC: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         
-        collectionView.topAnchor.constraint(equalTo: searchBar.bottomAnchor).isActive = true
+        collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
         collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
@@ -113,7 +100,7 @@ extension ImagesCollectionVC {
         let imageType = URLQueryItem(name: "image_type", value: "photo")
         let orientation = URLQueryItem(name: "orientation", value: "vertical")
         let safeSearch = URLQueryItem(name: "safesearch", value: "true")
-        let perPage = URLQueryItem(name: "per_page", value: "5")
+        let perPage = URLQueryItem(name: "per_page", value: numberOfImages)
         let imageOrder = URLQueryItem(name: "order", value: "latest")
         
         
@@ -145,6 +132,3 @@ extension ImagesCollectionVC {
     }
 }
 
-extension ImagesCollectionVC: UISearchBarDelegate {
-    
-}
