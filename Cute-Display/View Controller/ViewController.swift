@@ -13,7 +13,6 @@ class ViewController: UIViewController {
     var imgArray = [String]()
     
     let apiKey: String              = "13651762-bb2c92e1d09f606942de46d23"
-    let urlString: String           = "https://pixabay.com/api/"
     
     fileprivate let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -33,14 +32,9 @@ class ViewController: UIViewController {
         print("ArrayItemsInViewDidLoad: \(imgArray.count)")
         
     }
-    
-    
     fileprivate func configureView() {
         self.view.backgroundColor = .white
     }
-    
-    
-    
     fileprivate func configureCollectionView() {
         self.view.addSubview(collectionView)
         collectionView.backgroundColor = .white
@@ -64,7 +58,7 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegateFl
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20
+        return imgArray.count
     }
     
     
@@ -85,7 +79,7 @@ extension ViewController {
         urlComponents.host = "pixabay.com"
         urlComponents.path = "/api/"
         
-        let searchedImage = URLQueryItem(name: "q", value: "car")
+        let searchedImage = URLQueryItem(name: "q", value: "flower")
         let imageType = URLQueryItem(name: "image_type", value: "photo")
         let orientation = URLQueryItem(name: "orientation", value: "vertical")
         let key = URLQueryItem(name: "key", value: apiKey)
@@ -95,39 +89,25 @@ extension ViewController {
         guard let validURL = urlComponents.url else { return }
         
         let task = URLSession.shared.dataTask(with: validURL) { (data, response, error) in
-            if error != nil { return }
-            guard let validData = data else { return }
+            if error != nil || data == nil { return }
             
             do {
-        
-                let validJson = try JSONDecoder().decode(Json4Swift_Base.self, from: validData)
+                let validJson = try JSONDecoder().decode(Json4Swift_Base.self, from: data!)
                 self.jsonData(data: validJson)
-                
             }
-                
             catch { return }
-            
         }
         task.resume()
     }
     
     
     func jsonData(data: Json4Swift_Base) {
-        
-        //print(data.hits?.count ?? 1)
-        
         for index in 0..<data.hits!.count {
-            
             let urlString = String((data.hits?[index].largeImageURL!)!)
-            
             self.imgArray.append(urlString)
         }
-        print("After Appending: \(imgArray.count)")
-        
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+        }
     }
-    
-    
-    
-    
-    
 }
