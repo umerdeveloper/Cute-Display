@@ -10,7 +10,6 @@ import UIKit
 import SDWebImage
 
 class ImageVC: UIViewController {
-    
     var imageURL: URL!          = nil
     let imageView               = UIImageView()
 
@@ -24,6 +23,7 @@ class ImageVC: UIViewController {
         self.view.backgroundColor = .white
     }
     
+    
     fileprivate func configureImageView() {
         
         imageView.backgroundColor = .white
@@ -36,8 +36,6 @@ class ImageVC: UIViewController {
         imageView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         
         imageView.sd_setImage(with: imageURL)
-        
-        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
