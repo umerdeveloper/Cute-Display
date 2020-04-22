@@ -55,7 +55,6 @@ class ImagesCollectionVC: UIViewController, UICollectionViewDelegate {
 
 
 extension ImagesCollectionVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.width / 1.1, height: collectionView.frame.width / 2.2)
     }

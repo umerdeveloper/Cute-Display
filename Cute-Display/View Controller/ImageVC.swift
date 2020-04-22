@@ -10,8 +10,8 @@ import UIKit
 import SDWebImage
 
 class ImageVC: UIViewController {
-    var imageURL: URL!          = nil
-    let imageView               = UIImageView()
+    var imageURL: URL!              = nil
+    let imageView                   = UIImageView()
 
     override func viewDidLoad() {
         super.viewDidLoad()

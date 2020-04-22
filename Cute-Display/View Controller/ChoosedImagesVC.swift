@@ -36,8 +36,8 @@ class ChoosedImagesVC: UIViewController, UITextFieldDelegate {
         self.view.backgroundColor = UIColor(red: 223/255, green: 249/255, blue: 251/255, alpha: 1)
     }
     
+    
     fileprivate func configureContainerView() {
-        
         self.view.addSubview(containerView)
         containerView.backgroundColor = UIColor(red: 199/255, green: 236/255, blue: 238/255, alpha: 1)
         containerView.translatesAutoresizingMaskIntoConstraints = false
@@ -49,8 +49,8 @@ class ChoosedImagesVC: UIViewController, UITextFieldDelegate {
         containerView.heightAnchor.constraint(equalToConstant: 320).isActive = true
     }
     
+    
     fileprivate func configureNumberOfImages() {
-        
         containerView.addSubview(numberOfImagesLabel)
         numberOfImagesLabel.text = "How Many Images"
         
@@ -64,8 +64,8 @@ class ChoosedImagesVC: UIViewController, UITextFieldDelegate {
         numberOfImagesTextField.backgroundColor = UIColor(red: 223/255, green: 249/255, blue: 251/255, alpha: 1)
     }
     
+    
     fileprivate func configureSearchedImage() {
-        
         containerView.addSubview(searchedImageLabel)
         searchedImageLabel.text = "Which Kind Of Image"
         
@@ -81,17 +81,12 @@ class ChoosedImagesVC: UIViewController, UITextFieldDelegate {
     }
     
     
-    
-    
-    
-    
     fileprivate func configureSearchButton() {
         containerView.addSubview(searchButton)
         searchButton.setTitle("SEARCH", for: .normal)
         searchButton.addTarget(self, action: #selector(searchButtonTapped), for: .touchUpInside)
         searchButton.layer.cornerRadius = 12
         searchButton.setTitleColor(.white, for: .normal)
-        //searchButton.backgroundColor = UIColor(red: 223/255, green: 249/255, blue: 251/255, alpha: 1)
         searchButton.backgroundColor = .darkGray
         searchButton.translatesAutoresizingMaskIntoConstraints = false
         
@@ -113,9 +108,6 @@ class ChoosedImagesVC: UIViewController, UITextFieldDelegate {
         }
         
         let vc = ImagesCollectionVC()
-        
-        
-        
         self.numberOfImages = self.numberOfImagesTextField.text!
         self.searchImage = self.searchedImageTextField.text!
         
@@ -132,6 +124,4 @@ class ChoosedImagesVC: UIViewController, UITextFieldDelegate {
         alert.addAction(UIAlertAction(title: "OK", style: .default))
         present(alert, animated: true)
     }
-    
-    
 }
