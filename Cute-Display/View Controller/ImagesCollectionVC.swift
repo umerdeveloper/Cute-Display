@@ -9,7 +9,7 @@
 import UIKit
 import SDWebImage
 
-class ImagesCollectionVC: UIViewController {
+class ImagesCollectionVC: UIViewController, UICollectionViewDelegate {
     
     var imgArray                        = [String]()
     private let apiKey: String          = "13651762-bb2c92e1d09f606942de46d23"
